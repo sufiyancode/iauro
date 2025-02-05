@@ -1,0 +1,96 @@
+// Variables
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$font-stack: 'Arial, sans-serif';
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Global Styles
+body {
+  font-family: $font-stack;
+  margin: 0;
+  padding: 0;
+  background-color: adjust-color($primary-color, $lightness: 30%);
+  color: #333;
+}
+
+header {
+  background-color: $primary-color;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+nav {
+  background-color: adjust-color($primary-color, $lightness: -10%);
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    li {
+      margin: 0 1rem;
+      a {
+        text-decoration: none;
+        color: white;
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+}
+
+.container {
+  padding: 2rem;
+  @include flex-center;
+  flex-direction: column;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin: 1rem 0;
+  width: 300px;
+  text-align: center;
+
+  h2 {
+    color: $primary-color;
+  }
+
+  p {
+    color: #666;
+  }
+
+  button {
+    background-color: $secondary-color;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color:  adjust-color($secondary-color, $lightness: -10%);
+
+    }
+  }
+}
+
+footer {
+  background-color: adjust-color($primary-color, $lightness: 30%);
+
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+}
