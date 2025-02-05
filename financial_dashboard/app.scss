@@ -1,0 +1,14 @@
+$color1: yellow, green;
+$color2: blue;
+$large: 600px;
+
+
+
+body {
+    h1 {
+        font-size: $large
+    }
+    a{
+        color: nth($color1,1 );
+    }
+}

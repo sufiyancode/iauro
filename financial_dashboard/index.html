@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Financial Activity</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <section class="header">
+        <h1>Financial Activity</h1>
+        <div class="header-left">
+            <button class="btn">
+                <span><img style="width: 20px" src="./icons/downloads.png" alt="" /></span>
+            </button>
+            <button class="btn">
+                <span><img style="width: 20px" src="./icons/filter.png" alt="" /></span>
+            </button>
+            <button class="btn btn-primary">Add new</button>
+        </div>
+    </section>
+    <hr class="solid" />
+    <section class="table-section">
+        <table id="financeTable" class="table">
+            <thead class="table-head">
+                <tr>
+                    <th>
+                        <div class="header-name">
+                            <span>Financial Year</span>
+                            <span class="sort-icon"><img style="width: 20px" src="./icons/sort_a.png" alt="" /></span>
+                        </div>
+
+                        <select>
+                            <option>2024-2025</option>
+                            <option>2023-2024</option>
+                            <option>2022-2023</option>
+                            <option>2021-2022</option>
+                            <option>2020-2021</option>
+                            <option>2019-2020</option>
+                            <option>2018-2019</option>
+                            <option>2017-2018</option>
+                        </select>
+                    </th>
+                    <th>
+                        <div class="header-name">
+                            <span>CGST%</span>
+                            <button onclick="sortDatabyCgst(this)" class="btn" name="cgst">
+                                <span class="sort-icon"><img style="width: 20px" src="./icons/sort_a.png"
+                                        alt="" /></span></button>
+                        </div>
+                        <div class="search-field">
+                            <input type="text" class="search-input" placeholder="CGST%" />
+                        </div>
+                    </th>
+                    <th>
+                        <div class="header-name">
+                            <span>SGST%</span>
+                            <button onclick="sortDatabyCgst(this)" class="btn" name="sgst">
+                                <span class="sort-icon"><img style="width: 20px" src="./icons/sort_a.png"
+                                        alt="" /></span></button>
+                        </div>
+                        <div class="search-field">
+                            <input type="text" class="search-input" placeholder="SGST%" />
+                        </div>
+                    </th>
+                    <th>
+                        <div class="header-name">
+                            <span>Cost of form</span>
+                            <button onclick="sortDatabyCgst(this)" class="btn" name="costOfForm">
+                                <span class="sort-icon"><img style="width: 20px" src="./icons/sort_a.png"
+                                        alt="" /></span></button>
+                        </div>
+                        <div class="search-field">
+                            <input type="text" class="search-input" placeholder="Cost of form" />
+                        </div>
+                    </th>
+                    <th>
+                        <div class="header-name">
+                            <span>Effective From</span>
+                            <button onclick="sortDatabyCgst(this)" class="btn" name="effectiveFrom">
+                                <span class="sort-icon"><img style="width: 20px" src="./icons/sort_a.png"
+                                        alt="" /></span>
+                            </button>
+                        </div>
+                        <div class="search-field">
+                            <input type="text" class="search-input" placeholder="Effective From" />
+                        </div>
+                    </th>
+                    <th></th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody class="table-body"></tbody>
+
+        </table>
+
+    </section>
+    <section>
+        <table>
+            <tbody>
+                <tr class="table-input">
+                    <td>
+                        <select id="financial">
+                            <option value="2023-2024">2023-2024</option>
+                            <option value="2024-2025">2024-2025</option>
+                            <option value="2022-2023">2022-2023</option>
+                            <option value="2021-2022">2021-2022</option>
+                            <option value="2020-2021">2020-2021</option>
+                            <option value="2019-2020">2019-2020</option>
+                            <option value="2018-2019">2018-2019</option>
+                            <option value="2017-2018">2017-2018</option>
+                        </select>
+                    </td>
+                    <td>
+                        <div class="search-field">
+                            <input type="number" id="cgst" class="search-input" placeholder="CGST%" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="search-field">
+                            <input type="number" id="sgst" class="search-input" placeholder="SGST%" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="search-field">
+                            <input type="number" id="costOfForm" class="search-input" placeholder="Cost of form"
+                                step="0.01" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="search-field">
+                            <input type="date" id="effectiveFrom" class="search-input" placeholder="Effective From" />
+                        </div>
+                    </td>
+                    <td><button class="btn btn-primary" onclick="addRow()">Add</button></td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+</body>
+<script src="./script.js"></script>
+
+</html>
