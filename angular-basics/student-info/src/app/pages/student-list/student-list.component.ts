@@ -35,6 +35,7 @@ export class StudentListComponent implements OnInit {
   deleteStudent(index: number) {
     this.students.splice(index, 1);
     localStorage.setItem('students', JSON.stringify(this.students));
+    this.ngOnInit();
   }
 
   editStudent(index: number) {
