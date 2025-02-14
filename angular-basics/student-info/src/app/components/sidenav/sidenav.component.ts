@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './sidenav.component.css',
 })
 export class SidenavComponent {
-  @Input() opened = true; // Get the opened state from parent
+  @Input() opened = true;
   @ViewChild('drawer') sidenav!: MatSidenav;
 
   toggle() {

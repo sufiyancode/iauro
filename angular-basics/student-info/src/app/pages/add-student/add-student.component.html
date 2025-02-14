@@ -1,4 +1,4 @@
-<mat-card>
+<!-- <mat-card>
     <h2>{{ editIndex !== null ? 'Edit' : 'Add' }} Student</h2>
 
     <form (ngSubmit)="onSubmit()" #studentForm="ngForm" class="form-container">
@@ -44,14 +44,14 @@
             <textarea matInput name="address" [(ngModel)]="student.address" required></textarea>
         </mat-form-field>
 
-        <!-- <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline">
             <mat-label>State</mat-label>
             <mat-select [(ngModel)]="student.state" name="state">
                 <mat-option *ngFor="let state of states" [value]="state">
                     {{ state }}
                 </mat-option>
             </mat-select>
-        </mat-form-field> -->
+        </mat-form-field> 
 
         <mat-form-field appearance="outline">
             <mat-label>State</mat-label>
@@ -62,14 +62,14 @@
             </mat-select>
         </mat-form-field>
 
-        <!-- <mat-form-field appearance="outline">
+         <mat-form-field appearance="outline">
             <mat-label>City</mat-label>
             <mat-select [(ngModel)]="student.city" name="city" [disabled]="!student.state">
                 <mat-option *ngFor="let city of cities[student.state]" [value]="city">
                     {{ city }}
                 </mat-option>
             </mat-select>
-        </mat-form-field> -->
+        </mat-form-field> 
         <mat-form-field appearance="outline">
             <mat-label>City</mat-label>
             <mat-select [(ngModel)]="student.city" name="city" [disabled]="!student.state || !cities[student.state]">
@@ -79,6 +79,111 @@
             </mat-select>
         </mat-form-field>
         <button mat-raised-button class="btn" color="primary" type="submit">
+            {{ editIndex !== null ? 'Update' : 'Add' }} Student
+        </button>
+    </form>
+</mat-card> -->
+
+
+<mat-card>
+    <h2>{{ editIndex !== null ? 'Edit' : 'Add' }} Student</h2>
+
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" class="form-container">
+
+        <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" required />
+            <mat-error *ngIf="studentForm.get('firstName')?.hasError('required')">
+                First Name is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" required />
+            <mat-error *ngIf="studentForm.get('lastName')?.hasError('required')">
+                Last Name is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" required />
+            <mat-error *ngIf="studentForm.get('email')?.hasError('required')">
+                Email is required
+            </mat-error>
+            <mat-error *ngIf="studentForm.get('email')?.hasError('email')">
+                Enter a valid email
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput formControlName="mobileNumber" required />
+            <mat-error *ngIf="studentForm.get('mobileNumber')?.hasError('required')">
+                Mobile Number is required
+            </mat-error>
+            <mat-error *ngIf="studentForm.get('mobileNumber')?.hasError('pattern')">
+                Enter a valid 10-digit mobile number
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" required />
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="studentForm.get('dateOfBirth')?.hasError('required')">
+                Date of Birth is required
+            </mat-error>
+        </mat-form-field>
+
+        <div class="gender-container">
+            <label>Gender</label>
+            <mat-radio-group formControlName="gender">
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+                <mat-radio-button value="other">Other</mat-radio-button>
+            </mat-radio-group>
+            <mat-error *ngIf="studentForm.get('gender')?.hasError('required')">
+                Gender is required
+            </mat-error>
+        </div>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <textarea matInput formControlName="address" required></textarea>
+            <mat-error *ngIf="studentForm.get('address')?.hasError('required')">
+                Address is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>State</mat-label>
+            <mat-select formControlName="state" (selectionChange)="onStateChange()" required>
+                <mat-option *ngFor="let state of states" [value]="state">
+                    {{ state }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="studentForm.get('state')?.hasError('required')">
+                State is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <mat-select formControlName="city"
+                [disabled]="!studentForm.get('state')?.value || !cities[studentForm.get('state')?.value]">
+                <mat-option *ngFor="let city of cities[studentForm.get('state')?.value] || []" [value]="city">
+                    {{ city }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="studentForm.get('city')?.hasError('required')">
+                City is required
+            </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button class="btn" color="primary" type="submit" [disabled]="studentForm.invalid">
             {{ editIndex !== null ? 'Update' : 'Add' }} Student
         </button>
     </form>
