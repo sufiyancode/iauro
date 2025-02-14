@@ -1,0 +1,13 @@
+/* .container {
+    height: 100vh;
+}
+
+mat-drawer {
+    width: 250px;
+} */
+
+
+mat-drawer-container {
+    min-height: 100vh;
+    height: 100%;
+}
