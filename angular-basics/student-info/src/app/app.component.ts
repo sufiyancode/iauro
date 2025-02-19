@@ -6,10 +6,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { MatSidenav } from '@angular/material/sidenav';
-import { filter } from 'rxjs/operators';
-import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -20,27 +16,10 @@ import { Router, NavigationEnd } from '@angular/router';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    SidenavComponent,
+    RouterOutlet,
   ],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
-  @ViewChild(SidenavComponent) sidenavComponent!: SidenavComponent;
-
-  opened = false; // Initially closed
-  constructor(private router: Router) {
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe(() => {
-        if (this.sidenavComponent.sidenav) {
-          this.sidenavComponent.sidenav.close();
-        }
-      });
-  }
-  handleSidenav() {
-    this.opened = !this.opened; // Toggle sidenav
-    console.log('Sidenav Open:', this.opened);
-  }
-}
+export class AppComponent {}

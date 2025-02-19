@@ -1,13 +1,28 @@
-/* .container {
-    height: 100vh;
-}
-
-mat-drawer {
-    width: 250px;
-} */
-
-
 mat-drawer-container {
     min-height: 100vh;
     height: 100%;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #333;
+    /* Adjust text color */
+}
+
+/* Style for the icons */
+.nav-icon {
+    margin-right: 12px;
+    /* Space between icon and text */
+    font-size: 24px;
+    color: #555;
+    /* Adjust icon color */
+}
+
+/* Text alignment */
+.nav-text {
+    font-size: 16px;
+    font-weight: 500;
 }

@@ -1,8 +1,23 @@
+<mat-toolbar class="mat-elevation-z3">
+    <button class="btn" mat-icon-button (click)="handleSidenav()">
+        <mat-icon aria-hidden="false" aria-label="Menu">menu</mat-icon>
+    </button>
+</mat-toolbar>
 <mat-drawer-container>
     <mat-drawer #drawer mode="side" [opened]="opened">
         <mat-nav-list>
-            <a mat-list-item routerLink="/students">Student List</a>
-            <a mat-list-item routerLink="/add-student">Add Student</a>
+            <a mat-list-item routerLink="/students" class="nav-item">
+                <mat-icon class="nav-icon">group</mat-icon>
+                <span class="nav-text">Student List</span>
+            </a>
+            <a mat-list-item routerLink="/add-student" class="nav-item">
+                <mat-icon class="nav-icon">person_add</mat-icon>
+                <span class="nav-text">Add Student</span>
+            </a>
+            <a mat-list-item (click)="onLogout()" class="nav-item">
+                <mat-icon class="nav-icon">logout</mat-icon>
+                <span class="nav-text">Logout</span>
+            </a>
         </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content class="container">
