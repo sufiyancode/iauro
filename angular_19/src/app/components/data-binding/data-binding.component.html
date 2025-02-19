@@ -1,0 +1,17 @@
+<div class="row">
+    @if(userListResouce.hasValue()){
+
+    <!-- <div class="col-6">{{userListResouce.value() | json}} </div> -->
+    <div>
+        <ul *ngFor="let item of userListResouce.value()">
+            <li>{{item.name | lowercase }} </li>
+            <li>{{item.email}} </li>
+        </ul>
+    </div>
+    }
+    <div class="col-6">
+        <button (click)="onApiCall()">click</button>
+    </div>
+
+
+</div>

@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <label>Select Extentions</label>
+            <br>
+            <select [(ngModel)]="selectedExtention">
+                <option value=".pdf">.pdf</option>
+                <option value=".exe">.exe</option>
+                <option value=".docx">.docx</option>
+                <option value="other">other</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <input type="text" *ngIf="selectedExtention == 'other' " placeholder="enter other ext">
+        </div>
+    </div>
+    <div class="row col-3 mt-2">
+        <select name="" id="">
+            <option value="" *ngFor=" let city of cityList">{{city}} </option>
+        </select>
+    </div>
+    <div class="row mt-2">
+        <div class="col-6">
+            <table class="table table-bordered ">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>Active</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of studentList; let sr=index">
+                        <td>{{sr}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.city}}</td>
+                        <td>
+
+
+                            <p *ngIf="item.isActive == true">Active</p>
+                            <p *ngIf="item.isActive == false">Not Active</p>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="p-3" [ngClass]="changeClass">Div change class</div>
+        <input type="text" [(ngModel)]="changeClass">
+    </div>
+    <div class="row mt-2">
+        <div class="p-3" [ngClass]="isDivActive==true? 'bg-success' : 'bg-danger' ">Div color class</div>
+        <input type="checkbox" [(ngModel)]="isDivActive">
+    </div>
+
+</div>
